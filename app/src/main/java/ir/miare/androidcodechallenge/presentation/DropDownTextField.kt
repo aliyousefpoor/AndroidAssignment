@@ -66,7 +66,7 @@ fun DropdownTextField(
                     focusedContainerColor = Color.White,
                     unfocusedContainerColor = Color.White,
                     errorContainerColor = Color.White,
-                    focusedTextColor = Color.Gray,
+                    focusedTextColor = Color.Black,
                     focusedPlaceholderColor = Color.Blue,
                     unfocusedPlaceholderColor = Color.Gray,
                     focusedLabelColor = Color.Blue,

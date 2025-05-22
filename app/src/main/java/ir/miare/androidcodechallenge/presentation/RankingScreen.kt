@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -37,19 +38,10 @@ fun RankingScreen(
             Text(text = "Error: ${state.error}", modifier = Modifier.padding(16.dp))
         } else {
             LazyColumn(modifier = Modifier.fillMaxSize()) {
-                state.data.forEach { fakeData ->
-                    item {
-                        LeagueItem(
-                            leagueName = fakeData.league.name.takeIf { it.isNotEmpty() } ?: "Unknown League",
-                            leagueCountry = fakeData.league.country.takeIf { it.isNotEmpty() } ?: "Unknown Country"
-                        )
-                    }
-                    items(fakeData.players.size) { index ->
-                        PlayerItem(
-                            player = fakeData.players[index],
-                            onClick = { onPlayerClick(fakeData.players[index]) }
-                        )
-                    }
+                items(state.data) { fakeData ->
+                    DataItem(fakeData = fakeData, onPlayerClick = { player ->
+                        onPlayerClick.invoke(player)
+                    })
                 }
             }
         }
