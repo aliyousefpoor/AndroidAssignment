@@ -1,7 +1,7 @@
 package ir.miare.androidcodechallenge.data.service
 
 import ir.logicbase.mockfit.Mock
-import ir.miare.androidcodechallenge.FakeData
+import ir.miare.androidcodechallenge.data.model.FakeData
 import retrofit2.http.GET
 
 interface RankingApi {

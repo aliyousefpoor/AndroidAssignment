@@ -5,6 +5,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ir.miare.androidcodechallenge.domain.repository.RankingRepository
+import ir.miare.androidcodechallenge.domain.usecase.GetRankingDataUseCase
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -28,5 +30,11 @@ abstract class AppModule {
     @Provides
     @Singleton
     fun provideRankingRepositoryImpl(retrofit: Retrofit) {
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetRankingDataUseCase(repository: RankingRepository): GetRankingDataUseCase {
+        return GetRankingDataUseCase(repository)
     }
 }

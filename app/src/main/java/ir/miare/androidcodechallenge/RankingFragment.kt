@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import ir.logicbase.mockfit.Mock
 import ir.logicbase.mockfit.MockFitConfig
 import ir.logicbase.mockfit.MockFitInterceptor
+import ir.miare.androidcodechallenge.data.model.FakeData
 import ir.miare.androidcodechallenge.databinding.FragmentRankingBinding
 import ir.miare.androidcodechallenge.databinding.ItemLeagueBinding
 import ir.miare.androidcodechallenge.databinding.ItemPlayerBinding
