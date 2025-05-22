@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetRankingDataUseCase @Inject constructor(private val repository: RankingRepository) {
-    suspend fun invoke(): Flow<List<FakeData>> {
+    suspend fun invoke(): Flow<List<FakeData>?> {
         return repository.getRankingData()
     }
 }

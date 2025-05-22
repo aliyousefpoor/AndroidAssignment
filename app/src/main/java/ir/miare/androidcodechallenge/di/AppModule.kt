@@ -5,9 +5,12 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ir.miare.androidcodechallenge.data.RankingRepositoryImpl
+import ir.miare.androidcodechallenge.data.datasource.RankingRemoteDataSource
+import ir.miare.androidcodechallenge.data.datasource.RankingRemoteDataSourceImpl
+import ir.miare.androidcodechallenge.data.service.RankingApi
 import ir.miare.androidcodechallenge.domain.repository.RankingRepository
 import ir.miare.androidcodechallenge.domain.usecase.GetRankingDataUseCase
-import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
@@ -16,20 +19,24 @@ abstract class AppModule {
 
     @Binds
     @Singleton
-    abstract fun bindRankingRemoteDataSource()
+    abstract fun bindRankingRemoteDataSource(
+        rankingRemoteDataSourceImpl: RankingRemoteDataSourceImpl
+    ): RankingRemoteDataSource
 
     @Provides
     @Singleton
-    fun provideRankingRemoteDataSourceImpl() {
+    fun provideRankingRemoteDataSourceImpl(api: RankingApi): RankingRemoteDataSourceImpl {
+        return RankingRemoteDataSourceImpl(api)
     }
 
     @Binds
     @Singleton
-    abstract fun bindRankingRepository()
+    abstract fun bindRankingRepository(rankingRepositoryImpl: RankingRepositoryImpl): RankingRepository
 
     @Provides
     @Singleton
-    fun provideRankingRepositoryImpl(retrofit: Retrofit) {
+    fun provideRankingRepositoryImpl(dataSource: RankingRemoteDataSource): RankingRepositoryImpl {
+        return RankingRepositoryImpl(dataSource)
     }
 
     @Provides
