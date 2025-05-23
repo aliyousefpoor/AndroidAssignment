@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.miare.androidcodechallenge.data.model.FakeData
+import ir.miare.androidcodechallenge.data.model.Player
 import ir.miare.androidcodechallenge.domain.usecase.GetRankingDataUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,10 +21,15 @@ class RankingViewModel @Inject constructor(
     private val _state = MutableStateFlow(RankingState())
     val state: StateFlow<RankingState> = _state.asStateFlow()
 
+    private val _playerState = MutableStateFlow<Player?>(null)
+    val playerState: StateFlow<Player?> = _playerState.asStateFlow()
+
     fun processIntent(intent: RankingIntent) {
         when (intent) {
             is RankingIntent.LoadData -> loadData()
-            is RankingIntent.ShowPlayerDetails -> {}
+            is RankingIntent.ShowPlayerDetails -> {
+                _playerState.value = intent.player
+            }
             is RankingIntent.SelectSortOption -> updateSortingMode(intent.sortingMode)
         }
     }
