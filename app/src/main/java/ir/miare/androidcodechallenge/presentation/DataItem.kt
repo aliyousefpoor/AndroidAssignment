@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Card
+import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,13 +28,12 @@ fun DataItem(fakeData: FakeData, onPlayerClick: (Player) -> Unit) {
                 leagueCountry = fakeData.league.country.takeIf { it.isNotEmpty() }
                     ?: "Unknown Country"
             )
-//            Spacer(Modifier.padding(20.dp))
             fakeData.players?.forEachIndexed { index, player ->
                 PlayerItem(
                     player = fakeData.players[index],
                     onClick = { onPlayerClick.invoke(fakeData.players[index]) }
                 )
-                if (index != fakeData.players.size-1) {
+                if (index != fakeData.players.size - 1) {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()

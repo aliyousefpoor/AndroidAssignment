@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -34,16 +34,16 @@ fun PlayerItem(player: Player, onClick: () -> Unit) {
             Column(modifier = Modifier.padding(start = 12.dp).weight(1f)) {
                 Text(
                     text = player.name.takeIf { it.isNotEmpty() } ?: "Unknown Player",
-                    style = MaterialTheme.typography.body2
+                    style = MaterialTheme.typography.bodyMedium
                 )
                 Text(
                     text = player.team.name.takeIf { it.isNotEmpty() } ?: "Unknown Team",
-                    style = MaterialTheme.typography.body2
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
             Text(
                 text = player.team.rank.toString(),
-                style = MaterialTheme.typography.body2
+                style = MaterialTheme.typography.bodyMedium
             )
         }
     }

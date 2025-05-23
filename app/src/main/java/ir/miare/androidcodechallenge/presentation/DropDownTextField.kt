@@ -2,11 +2,12 @@ package ir.miare.androidcodechallenge.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -37,14 +38,14 @@ fun DropdownTextField(
             expanded = expanded,
             onExpandedChange = { expanded = !expanded }
         ) {
-            androidx.compose.material3.OutlinedTextField(
+            OutlinedTextField(
                 value = selectedOption,
                 onValueChange = {},
                 readOnly = true,
                 label = {
                     Text(
                         text = label,
-                        style = MaterialTheme.typography.body2
+                        style = MaterialTheme.typography.bodyMedium
                     )
                 },
                 trailingIcon = {
@@ -53,7 +54,7 @@ fun DropdownTextField(
                 placeholder = {
                     Text(
                         text = "Select Sorting",
-                        style = MaterialTheme.typography.body2
+                        style = MaterialTheme.typography.bodyMedium
                     )
                 },
                 modifier = modifier
@@ -72,7 +73,7 @@ fun DropdownTextField(
                     focusedLabelColor = Color.Blue,
                     unfocusedLabelColor = Color.Gray,
                 ),
-                textStyle = MaterialTheme.typography.body2
+                textStyle = MaterialTheme.typography.bodyMedium
             )
 
             ExposedDropdownMenu(
@@ -87,7 +88,7 @@ fun DropdownTextField(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = option.first,
                                 fontSize = 16.sp,
-                                style = MaterialTheme.typography.body2,
+                                style = MaterialTheme.typography.bodyMedium,
                                 color = if (selectedOption == option.first) Color.White else Color.Gray,
                                 textAlign = TextAlign.Start
                             )
