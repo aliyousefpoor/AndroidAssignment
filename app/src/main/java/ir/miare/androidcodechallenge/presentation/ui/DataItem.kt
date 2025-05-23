@@ -1,4 +1,4 @@
-package ir.miare.androidcodechallenge.presentation
+package ir.miare.androidcodechallenge.presentation.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

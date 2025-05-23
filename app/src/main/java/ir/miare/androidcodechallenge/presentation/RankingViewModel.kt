@@ -6,6 +6,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.miare.androidcodechallenge.data.model.FakeData
 import ir.miare.androidcodechallenge.data.model.Player
 import ir.miare.androidcodechallenge.domain.usecase.GetRankingDataUseCase
+import ir.miare.androidcodechallenge.presentation.mvi.RankingIntent
+import ir.miare.androidcodechallenge.presentation.mvi.RankingState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -1,4 +1,4 @@
-package ir.miare.androidcodechallenge.presentation
+package ir.miare.androidcodechallenge.presentation.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

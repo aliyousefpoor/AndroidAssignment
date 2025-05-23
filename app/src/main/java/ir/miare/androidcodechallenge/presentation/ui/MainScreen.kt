@@ -1,4 +1,4 @@
-package ir.miare.androidcodechallenge.presentation
+package ir.miare.androidcodechallenge.presentation.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -8,6 +8,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import ir.miare.androidcodechallenge.presentation.RankingViewModel
+import ir.miare.androidcodechallenge.presentation.mvi.RankingIntent
 
 @Composable
 fun MainScreen(

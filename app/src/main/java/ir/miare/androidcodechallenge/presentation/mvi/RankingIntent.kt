@@ -1,4 +1,4 @@
-package ir.miare.androidcodechallenge.presentation
+package ir.miare.androidcodechallenge.presentation.mvi
 
 import ir.miare.androidcodechallenge.data.model.Player
 

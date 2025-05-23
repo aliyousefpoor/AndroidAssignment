@@ -13,9 +13,9 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dagger.hilt.android.AndroidEntryPoint
-import ir.miare.androidcodechallenge.presentation.PlayerInfoBottomSheet
-import ir.miare.androidcodechallenge.presentation.RankingIntent
-import ir.miare.androidcodechallenge.presentation.RankingScreen
+import ir.miare.androidcodechallenge.presentation.ui.PlayerInfoBottomSheet
+import ir.miare.androidcodechallenge.presentation.mvi.RankingIntent
+import ir.miare.androidcodechallenge.presentation.ui.RankingScreen
 import ir.miare.androidcodechallenge.presentation.RankingViewModel
 
 @AndroidEntryPoint

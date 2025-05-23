@@ -1,4 +1,4 @@
-package ir.miare.androidcodechallenge.presentation
+package ir.miare.androidcodechallenge.presentation.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
