@@ -90,6 +90,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-compose:2.8.7"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.7"
     implementation "androidx.compose.runtime:runtime-livedata:1.8.2"
+    implementation "androidx.hilt:hilt-navigation-compose:1.2.0"
 
-    implementation"com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
 }
