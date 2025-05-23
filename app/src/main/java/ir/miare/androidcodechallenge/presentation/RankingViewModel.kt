@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.miare.androidcodechallenge.data.model.FakeData
 import ir.miare.androidcodechallenge.data.model.Player
+import ir.miare.androidcodechallenge.data.model.Result
 import ir.miare.androidcodechallenge.domain.usecase.GetRankingDataUseCase
 import ir.miare.androidcodechallenge.presentation.mvi.RankingIntent
 import ir.miare.androidcodechallenge.presentation.mvi.RankingState
@@ -32,6 +33,7 @@ class RankingViewModel @Inject constructor(
             is RankingIntent.ShowPlayerDetails -> {
                 _playerState.value = intent.player
             }
+
             is RankingIntent.SelectSortOption -> updateSortingMode(intent.sortingMode)
         }
     }
@@ -41,12 +43,23 @@ class RankingViewModel @Inject constructor(
             _state.value = _state.value.copy(isLoading = true)
             try {
                 getRankingDataUseCase.invoke().collectLatest { data ->
-                    data?.let {
-                        _state.value = _state.value.copy(
-                            isLoading = false,
-                            data = applySorting(data, _state.value.sortingMode),
-                            error = null
-                        )
+                    when (data) {
+                        is Result.Success -> {
+                            data.data?.let {
+                                _state.value = _state.value.copy(
+                                    isLoading = false,
+                                    data = applySorting(it, _state.value.sortingMode),
+                                    error = null
+                                )
+                            }
+                        }
+
+                        is Result.Error -> {
+                            _state.value = _state.value.copy(
+                                isLoading = false,
+                                error =  data.message
+                            )
+                        }
                     }
                 }
             } catch (e: Exception) {

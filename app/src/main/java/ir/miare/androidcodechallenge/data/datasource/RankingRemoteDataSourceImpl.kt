@@ -1,6 +1,7 @@
 package ir.miare.androidcodechallenge.data.datasource
 
 import ir.miare.androidcodechallenge.data.model.FakeData
+import ir.miare.androidcodechallenge.data.model.Result
 import ir.miare.androidcodechallenge.data.service.RankingApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +16,7 @@ import javax.inject.Inject
 
 class RankingRemoteDataSourceImpl @Inject constructor(private val api: RankingApi) :
     RankingRemoteDataSource {
-    override suspend fun getRankingData(): Flow<List<FakeData>?> {
+    override suspend fun getRankingData(): Flow<Result<List<FakeData>?>> {
         return channelFlow {
             try {
                 api.getData().enqueue(object : Callback<List<FakeData>> {
@@ -25,18 +26,22 @@ class RankingRemoteDataSourceImpl @Inject constructor(private val api: RankingAp
                     ) {
                         CoroutineScope(Dispatchers.IO).launch {
                             if (response.isSuccessful) {
-                                trySend(response.body())
+                                response.body()?.let {
+                                    trySend(Result.Success(it))
+                                } ?: trySend(Result.Error("Empty response body"))
+                            } else {
+                                trySend(Result.Error("API error: ${response.code()}"))
                             }
                         }
                     }
 
                     override fun onFailure(call: Call<List<FakeData>>, t: Throwable) {
-
+                        trySend(Result.Error("Network error: ${t.message ?: "Unknown error"}"))
                     }
 
                 })
-            }catch (e:Exception){
-
+            } catch (e: Exception) {
+                trySend(Result.Error("Exception: ${e.message ?: "Unknown error"}"))
             }
             awaitClose()
         }
